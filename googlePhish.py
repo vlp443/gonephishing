@@ -23,8 +23,8 @@ def printUrl(src):
 
 
 parser = argparse.ArgumentParser(description='Generate links to google searchable urls using unsecured redirects in mail.google.com.'
-                                             'Usage python3 ./googlePhish.py --url https://pixabay.com/images/search/kitten')
-parser.add_argument('--url', metavar='Location to link to e.g. https://www.pets4homes.co.uk/sale/cats', type=printUrl, nargs=1, help="Generate link to url")
+                                             'Usage python3 ./googlePhish.py --url <url>')
+parser.add_argument('--url', metavar='Location to link to e.g. https://pixabay.com/images/search/kitten', type=printUrl, nargs=1)
 
 try:
     if (len(sys.argv) < 2):
