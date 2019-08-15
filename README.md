@@ -13,6 +13,6 @@ google.com has over 40 unsecured redirects, so I have created this tool to gener
 Of course it is intended purely for demonstration purposes.
 
 ### Usage
-
+~~~
 python3 ./googlePhish --url https://www.pets4homes.co.uk/sale/cats
-
+~~~
