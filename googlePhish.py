@@ -18,7 +18,7 @@ def urlEncodeUrl(url):
     return '%' + '%'.join(a+b for a,b in zip(encoded[::2], encoded[1::2]))
 
 def printUrl(src):
-    print("https://mail.google.com/webhp#?uid=Z29vZ2xlUGhpc2g6ICBnaXRodWIuY29tL3ZscDQ0Mw==&q=" + urlEncodeUrl(src) + "=&btnI=I")
+    print("https://mail.google.com/webhp#?uid=Z29vZ2xlUGhpc2g6ICBnaXRodWIuY29tL3ZscDQ0Mw==&q={}=&btnI=I".format(urlEncodeUrl(src)))
 
 
 
