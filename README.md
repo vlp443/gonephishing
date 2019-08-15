@@ -14,5 +14,5 @@ Of course it is intended purely for demonstration purposes.
 
 ### Usage
 ~~~
-python3 ./googlePhish.py --url https://www.pets4homes.co.uk/sale/cats
+python3 ./googlePhish.py --url https://pixabay.com/images/search/kitten/
 ~~~
