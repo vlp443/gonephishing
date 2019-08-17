@@ -12,6 +12,9 @@ google.com has over 40 unsecured redirects, so I have created this tool to gener
 
 Of course it is intended purely for demonstration purposes.
 
+For googles take see https://sites.google.com/site/bughunteruniversity/nonvuln/open-redirect
+
+
 ### Usage
 ~~~
 python3 ./googlePhish.py --url https://pixabay.com/images/search/kitten/
