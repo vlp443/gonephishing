@@ -13,6 +13,7 @@ google.com has over 40 unsecured redirects, so I have created this tool to gener
 Of course it is intended purely for demonstration purposes.
 
 For googles take see https://sites.google.com/site/bughunteruniversity/nonvuln/open-redirect
+I thought this was also worth adding in https://phishingquiz.withgoogle.com/ :)
 
 
 ### Usage
