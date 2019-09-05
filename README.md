@@ -14,8 +14,11 @@ Of course it is intended purely for demonstration purposes.
 
 For googles take see https://sites.google.com/site/bughunteruniversity/nonvuln/open-redirect
 
-I thought the google phishing quiz was worth adding as its all about educating the user :) https://phishingquiz.withgoogle.com/ 
+I thought the google phishing quiz was worth adding as it pushes the point of hovering over the link and checking the domain in the browser status bar.  
 
+https://phishingquiz.withgoogle.com/
+
+I would expect that the majority of users would trust a site if they were redirected via mail server domain that they were logged into.  This would then cause the user to be more likely to accept a squatted DNS of the type described in the phishingquiz above due to the fact that they trust the redirector.
 
 ### Usage
 ~~~
