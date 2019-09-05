@@ -11,7 +11,7 @@ This item does not appear in the top ten 2017
 google.com has over 40 unsecured redirects  This is unlikelt to change as google do not see it as a vulnerability. https://sites.google.com/site/bughunteruniversity/nonvuln/open-redirect
 
 
-I would expect that the majority of users would trust a site if they were redirected via mail server domain that they were logged into.  This would then cause the user to be more likely to accept a squatted DNS of the type described in the quiz below due to the fact that they trust the url that they were redirected from.
+I would expect that the majority of users would trust a site if they were redirected via mail server domain that they were logged into.  This would then cause the user to be more likely to accept a squatted domain of the type described in the quiz below due to the fact that they trust the url that they were redirected from.
  https://phishingquiz.withgoogle.com/
 
 
