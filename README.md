@@ -17,5 +17,5 @@ For googles take see https://sites.google.com/site/bughunteruniversity/nonvuln/o
 
 ### Usage
 ~~~
-python3 ./googlePhish.py --url https://pixabay.com/images/search/kitten/
+python3 ./googlePhish.py --url  https://cutecatsinhats.com/ 
 ~~~
