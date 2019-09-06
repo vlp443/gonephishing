@@ -21,3 +21,4 @@ I would expect that the majority of users would trust a site if they were redire
 ~~~
 python3 ./googlePhish.py --url https://pixabay.com/images/search/kitten/
 ~~~
+Of course this is just for demo purposes and not to be used for evil.
