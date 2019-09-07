@@ -1,6 +1,5 @@
 # googlePhish
 
-# Since starting this, google have fixed thier security so its a lower priority for me
 
 Simple tool to generate redirects from mail.google.com to any url that is searchable by google
 
