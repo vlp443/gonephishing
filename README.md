@@ -3,9 +3,14 @@
 
 Simple tool to generate phishing urls.  Of course this is just for demo purposes and not to be used for evil.
 
+### clone
+
+git clone --recurse-submodules https://github.com/vlp443/gonephishing.git
+
 ### Requires
 
 pip3 install htmlmin
+
 
 ### Usage
 
