@@ -8,7 +8,7 @@ Simple tool to generate phishing urls
 
 ### Usage
 ~~~
-python3 ./ultraphish.py --gmail  https://cutecatsinhats.com/ 
+python3 ./ultraphish.py --gmail  --dest https://cutecatsinhats.com/ 
 ~~~
 Of course this is just for demo purposes and not to be used for evil.
 
