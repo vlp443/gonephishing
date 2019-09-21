@@ -1,7 +1,7 @@
 # gonephishing
 
 
-Simple tool to generate phishing urls.  Of course this is just for demo purposes and not to be used for evil.
+Generate phishing urls for demos and fun, not to be used for evil.
 
 ### clone
 
