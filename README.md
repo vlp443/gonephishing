@@ -1,8 +1,18 @@
 # ultraphish (renaming as I need new features)
 
 
-Simple tool to generate redirects from mail.google.com to any url that is searchable by google
+Simple tool to generate phishing urls
 
+
+
+
+### Usage
+~~~
+python3 ./ultraphish.py --gmail  https://cutecatsinhats.com/ 
+~~~
+Of course this is just for demo purposes and not to be used for evil.
+
+# GMAIL
 ### About
 The OWASP top ten 2013 included A10-Unvalidated Redirects and Forwards with the following description:
 Web applications frequently redirect and forward users to other pages and websites, and use untrusted data to determine the destination pages. Without proper validation, attackers can redirect victims to phishing or malware sites, or use forwards to access unauthorized pages. 
@@ -17,9 +27,3 @@ I would expect that the majority of users would trust a site if they were redire
 
 
 
-
-### Usage
-~~~
-python3 ./googlePhish.py --url  https://cutecatsinhats.com/ 
-~~~
-Of course this is just for demo purposes and not to be used for evil.
