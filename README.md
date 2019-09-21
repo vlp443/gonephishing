@@ -10,7 +10,7 @@ pip3 install htmlmin
 ### Usage
 
 #### Reflected XSS
-This is all very new so treat it gently.
+This is all very new so treat it gently. It may not have long to go (chrome browser security for example)
 
  * Generate a minified version of an html file and optionally base64 encode it (on by default, as it will be in most use cases so you can switch it off on the command line --base64 0), then inject it into some javascript/html and urlencode the entire string.  The javascript must contain a %s field to mark location to inject html into.  
 
