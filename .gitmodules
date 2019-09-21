@@ -1,0 +1,3 @@
+[submodule "argument_manager"]
+	path = argument_manager
+	url = https://github.com/vlp443/argument_manager.git
