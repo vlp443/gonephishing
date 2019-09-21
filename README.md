@@ -1,4 +1,5 @@
-# googlePhish
+# ultraphish (renaming as I need new features)
+
 
 Simple tool to generate redirects from mail.google.com to any url that is searchable by google
 
@@ -8,7 +9,7 @@ Web applications frequently redirect and forward users to other pages and websit
 
 This item does not appear in the top ten 2017
 
-google.com has over 40 unsecured redirects  This is unlikelt to change as google do not see it as a vulnerability. https://sites.google.com/site/bughunteruniversity/nonvuln/open-redirect
+google.com has over 40 unsecured redirects  This is unlikely to change as google do not see it as a vulnerability. https://sites.google.com/site/bughunteruniversity/nonvuln/open-redirect
 
 
 I would expect that the majority of users would trust a site if they were redirected via mail server domain that they were logged into.  This would then cause the user to be more likely to accept a squatted domain of the type described in the quiz below due to the fact that they trust the url via which they were redirected.
