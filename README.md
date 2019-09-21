@@ -1,7 +1,7 @@
 # gonephishing
 
 
-Generate phishing urls for demos and fun, not to be used for evil.
+Generate phishing urls for demos and fun (serious security research), not to be used for evil.
 
 ### clone
 
