@@ -1,4 +1,4 @@
-# ultraphish (renaming as I need new features)
+# gonephishing
 
 
 Simple tool to generate phishing urls.  Of course this is just for demo purposes and not to be used for evil.
