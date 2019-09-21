@@ -1,4 +1,4 @@
-# googlePhish
+# ultraphish (renaming as I need new features)
 
 
 Simple tool to generate redirects from mail.google.com to any url that is searchable by google
