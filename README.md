@@ -15,13 +15,13 @@ This is all very new so treat it gently. It may not have long to go (chrome brow
  * Generate a minified version of an html file and optionally base64 encode it (on by default, as it will be in most use cases so you can switch it off on the command line --base64 0), then inject it into some javascript/html and urlencode the entire string.  The javascript must contain a %s field to mark location to inject html into.  
 
 ~~~
-python3 ./ultraphish.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'
+python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'
 ~~~
 
 #### GMAIL Redirect
 
 ~~~
-python3 ./ultraphish.py --gmail  --dest https://cutecatsinhats.com/ 
+python3 ./gonephishing.py --gmail  --dest https://cutecatsinhats.com/ 
 ~~~
 
 
