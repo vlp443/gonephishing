@@ -38,7 +38,7 @@ argManager = parser.get_manager()\
     .add_value('--dest', metavar='Destination URL (for gmail)', nargs=1)\
     .add_value('--html', metavar='html to use, prefix with @ to make it a file e.g. --html @file.html', nargs=1)\
     .add_value('--encoders', metavar="encoder/comma delimited list of encoders, each will be applied sequentially: supported b64, hex", nargs=1, )\
-    .add_value('--js', metavar="Javascript to inject html into (optional), use %s to show lockation to inkect e.g. 'document.body.innerHTML=atob(\"%s\")", nargs=1)
+    .add_value('--js', metavar="Javascript to inject html into (optional), use %s to show location to inject e.g. 'document.body.innerHTML=atob(\"%s\")", nargs=1)
 
 argManager.add_action(argManager.print_help, '--help', help='Show this message', action='store_true')\
     .add_action(gmail_redirect, '--gmail', help='Redirect vial mail.google.com', action='store_true')\
