@@ -30,12 +30,13 @@ def encode_xss(values):
 
 
 def apply_html_encoders(html, values):
-    encoders = values.get_encoders("")
-    for i in encoders.split(','):
-        if i.lower()=='b64':
-            html = xssutils.base64_encode_string(html)
-        if i.lower()=='hex':
-            html = xssutils.js_hex_encode_all_chars(html)
+    encoders = values.get_encoders(False)
+    if encoders is not False:
+        for i in encoders.split(','):
+            if i.lower()=='b64':
+                html = xssutils.base64_encode_string(html)
+            elif i.lower()=='hex':
+                html = xssutils.js_hex_encode_all_chars(html)
     return html
 
 
