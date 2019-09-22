@@ -1,7 +1,11 @@
 # gonephishing
 
 
-Simple tool to generate phishing urls.  Of course this is just for demo purposes and not to be used for evil.
+Generate phishing urls for demos and fun (serious security research).
+
+### clone
+
+git clone --recurse-submodules https://github.com/vlp443/gonephishing.git
 
 ### Requires
 
@@ -24,6 +28,8 @@ python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.bod
 
 python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64,hex 
 ~~~
+Paste the generated link into the vulnerable request parameter and the page should be overwritten with the supplied html.
+
 
 #### GMAIL Redirect
 
