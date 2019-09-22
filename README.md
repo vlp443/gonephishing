@@ -16,10 +16,11 @@ pip3 install htmlmin
 #### Reflected XSS
 This is all very new so treat it gently. It may not have long to go (chrome browser security blocks the examples given Firefox is ok IE/Edge probably okay not tested yet)
 
- * Generate a minified version of an html file and optionally encode in, then inject it into some javascript/html and urlencode the entire string.  
+ Generate a minified version of an html file and optionally encode it then inject it into some javascript/html and urlencode the entire string.  
+ 
  The javascript must contain a %s field to mark location to inject html into.  
  
- Current supported encoders are b64 and hex.
+ Current supported encoders are b64 (base64) and hex ('\xAA\xBB' etc).
 
 
 Create a file called test.html (the @ sign below signifies that you are using a file rather than direct input)
