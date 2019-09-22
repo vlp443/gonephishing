@@ -19,7 +19,7 @@ This is all very new so treat it gently. It may not have long to go (chrome brow
 
  * Generate a minified version of an html file and optionally base64 encode it (on by default, as it will be in most use cases so you can switch it off on the command line --base64 0), then inject it into some javascript/html and urlencode the entire string.  The javascript must contain a %s field to mark location to inject html into.  
 
-Create the html file that you wish to inject (in this case test.html) then run the following command
+Create the html file that you wish to inject (in this case test.html) then run the following command.  The @ sign signifies to load html from a file rather than to process the passed in value.
 ~~~
 python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("%s")</script>'
 ~~~
