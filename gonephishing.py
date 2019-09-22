@@ -23,15 +23,21 @@ def encode_xss(values):
     if html[0] == '@':
         html = xssutils.read_file(html[1:])
     html = xssutils.minify_html(html)
-    encoders = values.get_encoders("")
-    for i in encoders.split(','):
-        if i.lower() == 'b64':
-            html = xssutils.base64_encode_string(html)
-        if i.lower() == 'hex':
-            html = xssutils.js_hex_encode_all_chars(html)
+    html = apply_html_encoders(html, values)
     js = values.get_js('%s')
     # @todo: base64 and empty js what to do?
     print(xssutils.url_encode_all_chars(js % html))
+
+
+def apply_html_encoders(html, values):
+    encoders = values.get_encoders("")
+    for i in encoders.split(','):
+        if i.lower()=='b64':
+            html = xssutils.base64_encode_string(html)
+        if i.lower()=='hex':
+            html = xssutils.js_hex_encode_all_chars(html)
+    return html
+
 
 argManager = parser.get_manager()\
     .add_value('--dest', metavar='Destination URL (for gmail)', nargs=1)\
