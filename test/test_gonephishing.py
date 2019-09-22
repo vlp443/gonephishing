@@ -18,6 +18,12 @@ class TestXssutils(unittest.TestCase):
         str="https://asdfghj+-%20aaaaaa";
         self.assertEqual(xssutils.url_encode_all_chars(str), '%68%74%74%70%73%3a%2f%2f%61%73%64%66%67%68%6a%2b%2d%25%32%30%61%61%61%61%61%61')
 
+    def test_it_hex_encodes_all_chars(self):
+        str="https://asdfghj+-%20aaaaaa";
+        self.assertEqual(xssutils.js_hex_encode_all_chars(str), '\\x68\\x74\\x74\\x70\\x73\\x3a\\x2f\\x2f\\x61\\x73\\x64\\x66\\x67\\x68\\x6a\\x2b\\x2d\\'
+                                                                'x25\\x32\\x30\\x61\\x61\\x61\\x61\\x61\\x61')
+
+
     def test_it_base64_encodes_strings(self):
         str="something to say here";
         self.assertEqual(xssutils.base64_encode_string(str), 'c29tZXRoaW5nIHRvIHNheSBoZXJl')

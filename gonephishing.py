@@ -23,20 +23,22 @@ def encode_xss(values):
     if html[0] == '@':
         html = xssutils.read_file(html[1:])
     html = xssutils.minify_html(html)
-    if(values.get_base64() == '1'):
-        html = xssutils.base64_encode_string(html)
-    js = values.get_js()
-
+    encoders = values.get_encoders(False)
+    if(encoders is not False):
+        for i in encoders.split(','):
+            if i.lower() == 'b64':
+                html = xssutils.base64_encode_string(html)
+            if i.lower() == 'hex':
+                html = xssutils.js_hex_encode_all_chars(html)
+    js = values.get_js('%s')
     # @todo: base64 and empty js what to do?
-    if(js == '-'):
-        js = '%s'
     print(xssutils.url_encode_all_chars(js % html))
 
 argManager = parser.get_manager()\
     .add_value('--dest', metavar='Destination URL (for gmail)', nargs=1)\
     .add_value('--html', metavar='html to use, prefix with @ to make it a file e.g. --html @file.html', nargs=1)\
-    .add_value('--base64', metavar="Base64 encode html payloads, usage --base64 0 for off, default is 1", nargs=1, default='1')\
-    .add_value('--js', metavar="Javascript to inject html into (optional), use %s to show lockation to inkect e.g. 'document.body.innerHTML=atob(\"%s\")", nargs=1, default='-')
+    .add_value('--encoders', metavar="encoder/comma delimited list of encoders, each will be applied sequentially: supported b64, hex", nargs=1, )\
+    .add_value('--js', metavar="Javascript to inject html into (optional), use %s to show lockation to inkect e.g. 'document.body.innerHTML=atob(\"%s\")", nargs=1)
 
 argManager.add_action(argManager.print_help, '--help', help='Show this message', action='store_true')\
     .add_action(gmail_redirect, '--gmail', help='Redirect vial mail.google.com', action='store_true')\
@@ -51,8 +53,10 @@ try:
 except (ParameterError) as e:
     if argManager.get_current_action() is None:
         print('Input parameter Error: "%s"' % e)
-    else:
-        print('Input parameter Error: "%s" while executing the %s command: ' % e, argManager.get_current_action())
+    else :
+        if e is not None:
+            print('Input parameter Error: "%s" while executing the following command: ' % e , argManager.get_current_action())
+    exit(1)
 
 except ActionError as e:
     print("Action Error: " +  str(e))
