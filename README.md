@@ -14,7 +14,7 @@ pip3 install htmlmin
 ### Usage
 
 #### Reflected XSS
-This is all very new so treat it gently. It may not have long to go (chrome browser security blocks the examples given Firefox is ok IE/Edge probably okay not tested yet)
+This is all very new so treat it gently. It may not have long to go (chrome browser security blocks the examples given Firefox, IE/Edge work)
 
  Generate a minified version of an html file and optionally encode it then inject it into some javascript/html and urlencode the entire string.  
  
