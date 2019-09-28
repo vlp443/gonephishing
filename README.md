@@ -21,6 +21,8 @@ This is all very new so treat it gently. It may not have long to go (chrome brow
  The javascript must contain a %s field to mark location to inject html into.  
  
  Current supported encoders are b64 (base64) and hex ('\xAA\xBB' etc).
+ 
+ IE only supports around 2000 characters in a get.
 
 
 Create a file called test.html (the @ sign below signifies that you are using a file rather than direct input)
