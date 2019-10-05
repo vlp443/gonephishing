@@ -16,7 +16,7 @@ class TestXssutils(unittest.TestCase):
 
     def test_it_url_encodes_all_chars(self):
         str="https://asdfghj+-%20aaaaaa";
-        self.assertEqual(xssutils.url_encode_all_chars(str), '%68%74%74%70%73%3a%2f%2f%61%73%64%66%67%68%6a%2b%2d%25%32%30%61%61%61%61%61%61')
+        self.assertEqual(xssutils.pcnt_encode_all_chars(str), '%68%74%74%70%73%3a%2f%2f%61%73%64%66%67%68%6a%2b%2d%25%32%30%61%61%61%61%61%61')
 
     def test_it_hex_encodes_all_chars(self):
         str="https://asdfghj+-%20aaaaaa";

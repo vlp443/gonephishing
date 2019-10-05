@@ -1,9 +1,12 @@
 import htmlmin
 import base64
+import urllib
 
 def minify_html(html):
     return htmlmin.minify(html, remove_empty_space=True)
 
+def url_encode(txt):
+    return urllib.parse.quote(txt)
 
 def hex_encode_prefix(prefix, payload):
     encoded = payload.encode('utf-8').hex()
@@ -13,7 +16,7 @@ def hex_encode_prefix(prefix, payload):
 def js_hex_encode_all_chars(payload):
     return hex_encode_prefix("\\x", payload)
 
-def url_encode_all_chars(payload):
+def pcnt_encode_all_chars(payload):
     return hex_encode_prefix("%", payload)
 
 
