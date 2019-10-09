@@ -36,15 +36,19 @@ def encode_xss(values):
 def apply_html_encoders(html, values):
     pcnt_encoded = False
     encoders = values.get_encoders(False)
+    encoder_functions = {
+        'b64':  lambda html: xssutils.base64_encode_string(html),
+        'hex':  lambda html: xssutils.js_hex_encode_all_chars(html),
+        'pcnt': lambda html: xssutils.pcnt_encode_all_chars(html)
+    }
     if encoders is not False:
-        for i in encoders.split(','):
-            if i.lower()=='b64':
-                html = xssutils.base64_encode_string(html)
-            elif i.lower()=='hex':
-                html = xssutils.js_hex_encode_all_chars(html)
-            elif i.lower()=='pcnt':
-                html = xssutils.js_hex_encode_all_chars(html)
-    # if we didnt percent encode apply normal url encoding so it doesnt break
+        encoder_list = encoders.split(',')
+        for i in encoder_list:
+            if(i in encoder_functions):
+                html = encoder_functions[i](html)
+            else:
+                print ('Encoder %s not found... Skipping' % i)
+        pcnt_encoded = encoder_list[-1] == 'pcnt'
     if not pcnt_encoded:
         html = xssutils.url_encode(html)
     return html
