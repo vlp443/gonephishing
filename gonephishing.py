@@ -24,8 +24,8 @@ def encode_xss(values):
         html = xssutils.read_file(html[1:])
     html = xssutils.minify_html(html)
     html = apply_html_encoders(html, values)
-    js = values.get_js('$-$')
-    js = js.split("$-$")
+    js = values.get_js('¬')
+    js = js.split("¬")
     if(len(js) == 1):
         js.append('')
     js = list(map(lambda val: xssutils.pcnt_encode_all_chars(val), js))

