@@ -38,7 +38,7 @@ Paste the generated link into the vulnerable request parameter and the page shou
 
 
 #### GMAIL Redirect
-
+OH COOL THEYVE FIXED IT, this now warns you that you are being redirected
 ~~~
 python3 ./gonephishing.py --gmail  --dest https://cutecatsinhats.com/ 
 ~~~
