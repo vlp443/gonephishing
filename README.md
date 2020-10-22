@@ -38,10 +38,14 @@ Paste the generated link into the vulnerable request parameter and the page shou
 
 
 #### GMAIL Redirect
-OH COOL THEYVE FIXED IT, this now warns you that you are being redirected
+OH COOL THEYVE FIXED IT, this now warns you that you are being redirected.  Will modify it to do something like this:
+https://mail.google.com&uid=354f2d78-58ba-4369-8893-5b8816a1ac81&timestamp=4563728@%63%75%74%65%63%61%74%73%69%6e%68%61%74%73%2e%63%6f%6d
+Which is good because it can work for any domain although I find the initial ampersand a bit annoying
+
 ~~~
 python3 ./gonephishing.py --gmail  --dest https://cutecatsinhats.com/ 
 ~~~
+
 
 
 ### About
